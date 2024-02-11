@@ -1,4 +1,7 @@
 <?php
+// ini_set('display_startup_errors', 1);
+// ini_set('display_errors', 1);
+// error_reporting(-1);
 session_start();
 if(isset($_SESSION) && $_SESSION['user_type']!=''){
   if($_SESSION['user_type']==0){
@@ -21,7 +24,7 @@ if(isset($_SESSION) && $_SESSION['user_type']!=''){
   <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="assets/img/favicon.png">
   <title>
-    Karyakarta | Login Panel
+    Prachar Store | Login Panel
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
