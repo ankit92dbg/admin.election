@@ -39,6 +39,35 @@ $isMarried = ($_POST['isMarried']=='') ? NULL : $_POST['isMarried'];
 $voter_label = ($_POST['voter_label'] == '') ? NULL : $_POST['voter_label'];
 $political_party = ($_POST['political_party'] == '') ? NULL : $_POST['political_party'];
 $isDead = ($_POST['isDead'] == '') ? NULL : $_POST['isDead'];
+
+$education = ($_POST['education'] == '') ? NULL : $_POST['education'];
+$education_other = ($_POST['education_other'] == '') ? NULL : $_POST['education_other'];
+
+$profession = ($_POST['profession'] == '') ? NULL : $_POST['profession'];
+$profession_other = ($_POST['profession_other'] == '') ? NULL : $_POST['profession_other'];
+
+$homeShifted = ($_POST['homeShifted'] == '') ? NULL : $_POST['homeShifted'];
+$constituencyHomeShifted = ($_POST['constituencyHomeShifted'] == '') ? NULL : $_POST['constituencyHomeShifted'];
+$homeShiftedAddress = ($_POST['homeShiftedAddress'] == '') ? NULL : $_POST['homeShiftedAddress'];
+$home_shifted_country = ($_POST['home_shifted_country'] == '') ? NULL : $_POST['home_shifted_country'];
+$home_shifted_state = ($_POST['home_shifted_state'] == '') ? NULL : $_POST['home_shifted_state'];
+$home_shifted_city = ($_POST['home_shifted_city'] == '') ? NULL : $_POST['home_shifted_city'];
+$home_shifted_address = ($_POST['home_shifted_address'] == '') ? NULL : $_POST['home_shifted_address'];
+
+$outsideLocation = ($_POST['outsideLocation'] == '') ? NULL : $_POST['outsideLocation'];
+$constituencyOutside = ($_POST['constituencyOutside'] == '') ? NULL : $_POST['constituencyOutside'];
+$outsideLocationAddress = ($_POST['outsideLocationAddress'] == '') ? NULL : $_POST['outsideLocationAddress'];
+$outside_location_country = ($_POST['outside_location_country'] == '') ? NULL : $_POST['outside_location_country'];
+$outside_location_state = ($_POST['outside_location_state'] == '') ? NULL : $_POST['outside_location_state'];
+$outside_location_city = ($_POST['outside_location_city'] == '') ? NULL : $_POST['outside_location_city'];
+$outside_location_address = ($_POST['outside_location_address'] == '') ? NULL : $_POST['outside_location_address'];
+
+$labharthi_center = ($_POST['labharthi_center'] == '') ? NULL : $_POST['labharthi_center'];
+$labharthi_state = ($_POST['labharthi_state'] == '') ? NULL : $_POST['labharthi_state'];
+$labharthi_candidate = ($_POST['labharthi_candidate'] == '') ? NULL : $_POST['labharthi_candidate'];
+
+
+
 $profile_image = $_POST['profile_image'];
 $user_type = 1;
 $query = "select * from voters_data where id='$voter_id'";
@@ -76,7 +105,28 @@ if(mysqli_num_rows($result)==1){
             `isMarried`='$isMarried',
             `voter_label`='$voter_label',
             `political_party`='$political_party',
-            `isDead`='$isDead'
+            `isDead`='$isDead',
+            `education`='$education',
+            `other_education`='$education_other',
+            `isHomeShifted`='$homeShifted',
+            `isHomeShiftedWithin`='$constituencyHomeShifted',
+            `shiftedAddress`='$homeShiftedAddress',
+            `shifted_country`='$home_shifted_country',
+            `shifted_state`='$home_shifted_state',
+            `shifted_city`='$home_shifted_city',
+            `shifted_address`='$home_shifted_address',
+            `profession`='$profession',
+            `other_profession`='$profession_other',
+            `isStayingOutside`='$outsideLocation',
+            `isStayingOutsideWithin`='$constituencyOutside',
+            `stayingAddress`='$outsideLocationAddress',
+            `staying_country`='$outside_location_country',
+            `staying_state`='$outside_location_state',
+            `staying_city`='$outside_location_city',
+            `staying_address`='$outside_location_address',
+            `labharthi_center`='$labharthi_center',
+            `labharthi_state`='$labharthi_state',
+            `labharthi_candidate`='$labharthi_candidate'
             WHERE `id`='$voter_id'";
             $result = mysqli_query($conn,$query);
 
@@ -100,7 +150,28 @@ if(mysqli_num_rows($result)==1){
             `isMarried`='$isMarried',
             `voter_label`='$voter_label',
             `political_party`='$political_party',
-            `isDead`='$isDead'
+            `isDead`='$isDead',
+            `education`='$education',
+            `other_education`='$education_other',
+            `isHomeShifted`='$homeShifted',
+            `isHomeShiftedWithin`='$constituencyHomeShifted',
+            `shiftedAddress`='$homeShiftedAddress',
+            `shifted_country`='$home_shifted_country',
+            `shifted_state`='$home_shifted_state',
+            `shifted_city`='$home_shifted_city',
+            `shifted_address`='$home_shifted_address',
+            `profession`='$profession',
+            `other_profession`='$profession_other',
+            `isStayingOutside`='$outsideLocation',
+            `isStayingOutsideWithin`='$constituencyOutside',
+            `stayingAddress`='$outsideLocationAddress',
+            `staying_country`='$outside_location_country',
+            `staying_state`='$outside_location_state',
+            `staying_city`='$outside_location_city',
+            `staying_address`='$outside_location_address',
+            `labharthi_center`='$labharthi_center',
+            `labharthi_state`='$labharthi_state',
+            `labharthi_candidate`='$labharthi_candidate'
             WHERE `id`='$voter_id'";
         $result = mysqli_query($conn,$query);
 

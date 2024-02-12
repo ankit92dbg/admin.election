@@ -368,13 +368,13 @@ $breadCrumbName = "Edit Voter";
                         </div>
                         <div class="col-3" id="homeShiftedConstituency" style="margin-top:2%;display:none;">
                             <div class="form-check">
-                                <input class="form-check-input constituency-label" type="radio" onchange="constituencyChange(this.value)" value="0" name="constituency" id="constituency">
+                                <input class="form-check-input constituency-label" type="radio" onchange="constituencyChange(this.value)" value="0" name="constituencyHomeShifted" id="constituencyHomeShifted">
                                 <label class="form-check-label" for="flexRadioDefault1">
                                    Within Constituency
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input constituency-label" type="radio" onchange="constituencyChange(this.value)" value="1" name="constituency" id="constituency">
+                                <input class="form-check-input constituency-label" type="radio" onchange="constituencyChange(this.value)" value="1" name="constituencyHomeShifted" id="constituencyHomeShifted">
                                 <label class="form-check-label" for="flexRadioDefault2">
                                     Outside Constituency
                                 </label>
@@ -391,7 +391,7 @@ $breadCrumbName = "Edit Voter";
                                 <div class="col-12">
                                     <div class="mb-3">
                                         <label class="label">Country</label>
-                                        <select id="home_shifted_country" onchange="load_state(this.value)" name="home_shifted_country" class="form-select" required>
+                                        <select id="home_shifted_country" onchange="load_state(this.value,'#home_shifted_state','#home_shifted_city')" name="home_shifted_country" class="form-select">
                                             <option value="" selected>Please Select</option>
                                         </select>   
                                     </div>
@@ -399,7 +399,7 @@ $breadCrumbName = "Edit Voter";
                                 <div class="col-12">
                                     <div class="mb-3">
                                         <label class="label">State</label>
-                                        <select id="home_shifted_state" onchange="load_city(this.value)" name="home_shifted_state" class="form-select" required>
+                                        <select id="home_shifted_state" onchange="load_city(this.value,'#home_shifted_city')" name="home_shifted_state" class="form-select">
                                             <option value="" selected>Please Select</option>
                                         </select>   
                                     </div>
@@ -407,7 +407,7 @@ $breadCrumbName = "Edit Voter";
                                 <div class="col-12">
                                     <div class="mb-3">
                                         <label class="label">City</label>
-                                        <select id="home_shifted_city" name="home_shifted_city" class="form-select" required>
+                                        <select id="home_shifted_city" name="home_shifted_city" class="form-select">
                                             <option value="" selected>Please Select</option>
                                         </select>   
                                     </div>
@@ -415,7 +415,7 @@ $breadCrumbName = "Edit Voter";
                                 <div class="col-12">
                                     <div class="mb-3">
                                         <label class="label">Address</label>
-                                        <textarea name="home_shifted_address" class="form-control form-control-lg" required></textarea>
+                                        <textarea id="home_shifted_address" name="home_shifted_address" class="form-control form-control-lg"></textarea>
                                     </div>
                                 </div>
                            </div> 
@@ -432,13 +432,13 @@ $breadCrumbName = "Edit Voter";
                         </div>
                         <div class="col-3" id="outsideLocationConstituency" style="margin-top:2%;display:none;">
                             <div class="form-check">
-                                <input class="form-check-input constituency-outside-label" type="radio" onchange="constituencyOutsideChange(this.value)" value="0" name="constituency" id="constituency">
+                                <input class="form-check-input constituency-outside-label" type="radio" onchange="constituencyOutsideChange(this.value)" value="0" name="constituencyOutside" id="constituencyOutside">
                                 <label class="form-check-label" for="flexRadioDefault1">
                                    Within Constituency
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input constituency-outside-label" type="radio" onchange="constituencyOutsideChange(this.value)" value="1" name="constituency" id="constituency">
+                                <input class="form-check-input constituency-outside-label" type="radio" onchange="constituencyOutsideChange(this.value)" value="1" name="constituencyOutside" id="constituencyOutside">
                                 <label class="form-check-label" for="flexRadioDefault2">
                                     Outside Constituency
                                 </label>
@@ -455,7 +455,7 @@ $breadCrumbName = "Edit Voter";
                                 <div class="col-12">
                                     <div class="mb-3">
                                         <label class="label">Country</label>
-                                        <select id="outside_location_country" onchange="load_state(this.value)" name="outside_location_country" class="form-select" required>
+                                        <select id="outside_location_country" onchange="load_state(this.value,'#outside_location_state','#outside_location_city')" name="outside_location_country" class="form-select">
                                             <option value="" selected>Please Select</option>
                                         </select>   
                                     </div>
@@ -463,7 +463,7 @@ $breadCrumbName = "Edit Voter";
                                 <div class="col-12">
                                     <div class="mb-3">
                                         <label class="label">State</label>
-                                        <select id="outside_location_state" onchange="load_city(this.value)" name="outside_location_state" class="form-select" required>
+                                        <select id="outside_location_state" onchange="load_city(this.value,'#outside_location_city')" name="outside_location_state" class="form-select">
                                             <option value="" selected>Please Select</option>
                                         </select>   
                                     </div>
@@ -471,7 +471,7 @@ $breadCrumbName = "Edit Voter";
                                 <div class="col-12">
                                     <div class="mb-3">
                                         <label class="label">City</label>
-                                        <select id="outside_location_city" name="outside_location_city" class="form-select" required>
+                                        <select id="outside_location_city" name="outside_location_city" class="form-select">
                                             <option value="" selected>Please Select</option>
                                         </select>   
                                     </div>
@@ -479,7 +479,7 @@ $breadCrumbName = "Edit Voter";
                                 <div class="col-12">
                                     <div class="mb-3">
                                         <label class="label">Address</label>
-                                        <textarea name="outside_location_address" class="form-control form-control-lg" required></textarea>
+                                        <textarea id="outside_location_address" name="outside_location_address" class="form-control form-control-lg"></textarea>
                                     </div>
                                 </div>
                            </div> 
@@ -488,7 +488,7 @@ $breadCrumbName = "Edit Voter";
                     <div class="col-4">
                         <div class="mb-3">
                             <label class="label">Labharthi(center)</label>
-                            <select id="labharthi" name="labharthi_center" class="form-select">
+                            <select id="labharthi_center" name="labharthi_center" class="form-select">
                                 <option value="" selected="">Please Select</option>
                             </select>
                         </div>
@@ -496,7 +496,7 @@ $breadCrumbName = "Edit Voter";
                     <div class="col-4">
                         <div class="mb-3">
                             <label class="label">Labharthi(state)</label>
-                            <select id="labharthi" name="labharthi_state" class="form-select">
+                            <select id="labharthi_state" name="labharthi_state" class="form-select">
                                 <option value="" selected="">Please Select</option>
                             </select>
                         </div>
@@ -504,7 +504,7 @@ $breadCrumbName = "Edit Voter";
                     <div class="col-4">
                         <div class="mb-3">
                             <label class="label">Labharthi(candidate)</label>
-                            <select id="labharthi" name="labharthi_candidate" class="form-select">
+                            <select id="labharthi_candidate" name="labharthi_candidate" class="form-select">
                                 <option value="" selected="">Please Select</option>
                             </select>
                         </div>
@@ -568,7 +568,7 @@ $breadCrumbName = "Edit Voter";
             })
         });
  }); 
- function load_data(page)  
+function load_data(page)  
       {  
         // $('#overlay').show()
            $.ajax({  
@@ -615,14 +615,56 @@ $breadCrumbName = "Edit Voter";
                         option_voter_label += `<option value="${data.voter_label[i].id}">${data.voter_label[i].label}</option>`
                     }
 
-                    //voter_label
+                    //political party
                     let option_political_party = [];
                     option_political_party += '<option value="" selected>Please Select</option>'
                     for(let i=0; i < data.political_party.length; i++){
                         option_political_party += `<option value="${data.political_party[i].id}">${data.political_party[i].name}</option>`
                     }
 
+                    //country
+                    let option_country = [];
+                    option_country += '<option value="" selected>Please Select</option>'
+                    for(let i=0; i < data.country.length; i++){
+                        option_country += `<option value="${data.country[i].id}">${data.country[i].name}</option>`
+                    }
+
+                    //address
+                    let option_address = [];
+                    option_address += '<option value="" selected>Please Select</option>'
+                    for(let i=0; i < data.address.length; i++){
+                        option_address += `<option value="${data.address[i].SECTION_NAME_EN}">${data.address[i].SECTION_NAME_EN}</option>`
+                    }
+
+                     //labharthi center
+                     let option_labharthi_center = [];
+                    option_labharthi_center += '<option value="" selected>Please Select</option>'
+                    for(let i=0; i < data.labharthi_center.length; i++){
+                        option_labharthi_center += `<option value="${data.labharthi_center[i].id}">${data.labharthi_center[i].scheme_name}</option>`
+                    }
+
+                     //labharthi state
+                     let option_labharthi_state = [];
+                    option_labharthi_state += '<option value="" selected>Please Select</option>'
+                    for(let i=0; i < data.labharthi_state.length; i++){
+                        option_labharthi_state += `<option value="${data.labharthi_state[i].id}">${data.labharthi_state[i].scheme_name}</option>`
+                    }
+
+                    //labharthi candidate
+                    let option_labharthi_candidate = [];
+                    option_labharthi_candidate += '<option value="" selected>Please Select</option>'
+                    for(let i=0; i < data.labharthi_candidate.length; i++){
+                        option_labharthi_candidate += `<option value="${data.labharthi_candidate[i].id}">${data.labharthi_candidate[i].scheme_name}</option>`
+                    }
+
                   
+                    $('#labharthi_center').html(option_labharthi_center)
+                    $('#labharthi_state').html(option_labharthi_state)
+                    $('#labharthi_candidate').html(option_labharthi_candidate)
+                    $('#home_shifted_country').html(option_country)
+                    $('#homeShiftedAddress').html(option_address)
+                    $('#outsideLocationAddress').html(option_address)
+                    $('#outside_location_country').html(option_country)
                     $('#political_party').html(option_political_party)
                     $('#voter_label').html(option_voter_label)
                     $('#SLNOINPART').html(option_SLNOINPART_no)
@@ -654,7 +696,14 @@ $breadCrumbName = "Edit Voter";
                     $('#aadhar').val(data.voterData.aadhar)
                     $('#RELATION_PART_NO').val(data.voterData.RELATION_PART_NO)
                     $('#RELATION_SLNOINPART').val(data.voterData.RELATION_SLNOINPART)
-
+                    $('#education_other').val(data.voterData.other_education)
+                    $('#profession_other').val(data.voterData.other_profession)
+                    if(data.voterData.education=='7'){
+                        $('#education_other').show()
+                    }
+                    if(data.voterData.profession=='25'){
+                        $('#profession_other').show()
+                    }
                     $('#AC_NO option[value="'+data.voterData.AC_NO+'"]').attr("selected", "selected");
                     $('#PART_NO option[value="'+data.voterData.PART_NO+'"]').attr("selected", "selected");
                     $('#SLNOINPART option[value="'+data.voterData.SLNOINPART+'"]').attr("selected", "selected");
@@ -667,11 +716,56 @@ $breadCrumbName = "Edit Voter";
                     $('#political_party option[value="'+data.voterData.political_party+'"]').attr("selected", "selected");
                     $('#isDead option[value="'+data.voterData.isDead+'"]').attr("selected", "selected");
 
+                    $('#education option[value="'+data.voterData.education+'"]').attr("selected", "selected");
+                    $('#profession option[value="'+data.voterData.profession+'"]').attr("selected", "selected");
+                    $('#labharthi_center option[value="'+data.voterData.labharthi_center+'"]').attr("selected", "selected");
+                    $('#labharthi_state option[value="'+data.voterData.labharthi_state+'"]').attr("selected", "selected");
+                    $('#labharthi_candidate option[value="'+data.voterData.labharthi_candidate+'"]').attr("selected", "selected");
+
+                    $('#homeShifted option[value="'+data.voterData.isHomeShifted+'"]').attr("selected", "selected");
+                    if(data.voterData.isHomeShifted!=0){
+                        homeShiftedChange(data.voterData.isHomeShifted)
+                    }    
+                    $("input[name=constituencyHomeShifted][value='"+data.voterData.isHomeShiftedWithin+"']").prop("checked",true);
+                    if(data.voterData.isHomeShifted!=0){
+                        constituencyChange(data.voterData.isHomeShiftedWithin)
+                    }  
+                    $('#homeShiftedAddress option[value="'+data.voterData.shiftedAddress+'"]').attr("selected", "selected");
+                    $('#home_shifted_country option[value="'+data.voterData.shifted_country+'"]').attr("selected", "selected");
+                    load_state(data.voterData.shifted_country,"#home_shifted_state",null)
+                    load_city(data.voterData.shifted_state,"#home_shifted_city")
+                    setTimeout(() => {
+                        $('#home_shifted_state option[value="'+data.voterData.shifted_state+'"]').attr("selected", "selected");
+                        $('#home_shifted_city option[value="'+data.voterData.shifted_city+'"]').attr("selected", "selected");
+                    }, 1000);
+                    $('#home_shifted_address').val(data.voterData.shifted_address)
+
+                    $('#outsideLocation option[value="'+data.voterData.isStayingOutside+'"]').attr("selected", "selected");
+
+                    if(data.voterData.isStayingOutside!=0){
+                        outsideLocationChange(data.voterData.isStayingOutside)
+                    }
+                    $("input[name=constituencyOutside][value='"+data.voterData.isStayingOutsideWithin+"']").prop("checked",true);
+                    if(data.voterData.isStayingOutside!=0){
+                        constituencyOutsideChange(data.voterData.isStayingOutsideWithin)
+                    }
+                    $('#outsideLocationAddress option[value="'+data.voterData.stayingAddress+'"]').attr("selected", "selected");
+                    $('#outside_location_country option[value="'+data.voterData.staying_country+'"]').attr("selected", "selected");
+                    load_state(data.voterData.staying_country,"#outside_location_state",null)
+                    load_city(data.voterData.staying_state,"#outside_location_city")
+                    setTimeout(() => {
+                        $('#outside_location_state option[value="'+data.voterData.staying_state+'"]').attr("selected", "selected");
+                        $('#outside_location_city option[value="'+data.voterData.staying_city+'"]').attr("selected", "selected");
+                    }, 1000);
+                    $('#outside_location_address').val(data.voterData.staying_address)
+
+
 
                     $('#overlay').hide()
                 }  
            })  
-      } 
+} 
+
 
       function load_part_no(val)  
       {  
@@ -796,4 +890,47 @@ function constituencyOutsideChange(value){
         $('#outsideLocationAddOutside').show()
     }
 } 
+
+function load_state(val,id,resetId)  
+      {  
+        $('#overlay').show()
+           $.ajax({  
+                url:"../ajax/master-data.php",  
+                method:"POST",  
+                data:{country:val},   
+                success:function(data){  
+                    let option = [];
+                    option += '<option value="" selected>Please Select</option>'
+                    for(let i=0; i < data.state.length; i++){
+                        option += `<option value="${data.state[i].id}">${data.state[i].name}</option>`
+                    }
+                    $(id).html(option)
+                    if(resetId!=null){
+                        let optionReset = [];
+                        optionReset += '<option value="" selected>Please Select</option>'
+                        $(resetId).html(optionReset)
+                    }
+                    $('#overlay').hide()
+                }  
+           })  
+      }
+
+function load_city(val,id)  
+      {  
+        $('#overlay').show()
+           $.ajax({  
+                url:"../ajax/master-data.php",  
+                method:"POST",  
+                data:{state:val},   
+                success:function(data){  
+                    let option = [];
+                    option += '<option value="" selected>Please Select</option>'
+                    for(let i=0; i < data.city.length; i++){
+                        option += `<option value="${data.city[i].id}">${data.city[i].city}</option>`
+                    }
+                    $(id).html(option)
+                    $('#overlay').hide()
+                }  
+           })  
+      }
 </script>

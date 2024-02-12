@@ -9,6 +9,35 @@ include ('../config/conn.php');
 $voter_label = [];
 $political_party=[];
 $area_list=[];
+$address = [];
+$labharthi_center = [];
+$labharthi_state = [];
+$labharthi_candidate = [];
+
+$q1 = "SELECT voters_data.id, voters_data.SECTION_NAME_EN FROM `voters_data` GROUP BY voters_data.SECTION_NAME_EN";
+$r1 = mysqli_query($conn,$q1);
+while($row1 = mysqli_fetch_assoc($r1)){
+    $address[] = $row1;
+}
+
+$q1 = "SELECT * FROM labharthi_scheme WHERE scheme_type=0";
+$r1 = mysqli_query($conn,$q1);
+while($row1 = mysqli_fetch_assoc($r1)){
+    $labharthi_center[] = $row1;
+}
+
+$q1 = "SELECT * FROM labharthi_scheme WHERE scheme_type=1";
+$r1 = mysqli_query($conn,$q1);
+while($row1 = mysqli_fetch_assoc($r1)){
+    $labharthi_state[] = $row1;
+}
+
+$q1 = "SELECT * FROM labharthi_scheme WHERE scheme_type=2";
+$r1 = mysqli_query($conn,$q1);
+while($row1 = mysqli_fetch_assoc($r1)){
+    $labharthi_candidate[] = $row1;
+}
+
 if(isset($_POST) && $_POST['voter_label']!=''){
     $q1 = "SELECT * from voters_label WHERE leader_id=".$_POST['user_id'];
     $r1 = mysqli_query($conn,$q1);
@@ -88,6 +117,15 @@ if(isset($_POST) && $_POST['action']=='SEC_DISTINCT'){
     
 }
 
+
+//fetch country
+$q1 = "SELECT * from countries";
+$r1 = mysqli_query($conn,$q1);
+$country = [];
+$output = new stdClass();
+while($row1 = mysqli_fetch_assoc($r1)){
+    $country[] = $row1;
+}
 
 //fetch state
 $q1 = "SELECT * from states";
@@ -296,6 +334,14 @@ if(isset($_POST) && $_POST['action']!='' && $_POST['action']=='voter_data'){
         $political_party[] = $row1;
     }
 
+    $q1 = "SELECT * from countries";
+    $r1 = mysqli_query($conn,$q1);
+    $output = new stdClass();
+    while($row1 = mysqli_fetch_assoc($r1)){
+        $country[] = $row1;
+    }
+    
+
      $output = new stdClass();
      $output->voterData = $voterData;
      
@@ -319,12 +365,28 @@ if(isset($_POST) && $_POST['action']!='' && $_POST['action']=='delete_label'){
     
 }
 
+if(isset($_POST) && $_POST['country']!=''){
+    $state = [];
+    $q1 = "SELECT * from states WHERE country_id=".$_POST['country'];
+    $r1 = mysqli_query($conn,$q1);
+    $output = new stdClass();
+    while($row1 = mysqli_fetch_assoc($r1)){
+        $state[] = $row1;
+    }
+}
+
+
 
 
 $output->AC_NO = $AC_NO;
 $output->PART_NO = $PART_NO;
+$output->address = $address;
+$output->labharthi_center = $labharthi_center;
+$output->labharthi_state = $labharthi_state;
+$output->labharthi_candidate = $labharthi_candidate;
 $output->SECTION_NO = $SECTION_NO;
 $output->SLNOINPART = $SLNOINPART;
+$output->country = $country;
 $output->state = $state;
 $output->city= $city;
 $output->leader_list= $leader_list;
