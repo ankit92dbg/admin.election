@@ -1006,6 +1006,218 @@ $breadCrumbName = "Voter List";
                           </div>
                         </div>
                       </div>
+                      <div id="educationList" class="inner-tab-data" style="display:none;margin-top: 2%;margin-bottom: 2%;">
+                        <h5>Education Wise Voter List</h5>
+                        <div class="row">
+                        <div class="col-2">
+                            <label class="label">Education</label>
+                            <select id="EDUCATION_LIST" class="form-select educationListTab">
+                                <option value="" selected>Select</option>
+                                <option value="0">Uneducated</option>
+                                <option value="1">10th</option>
+                                <option value="2">12th</option>
+                                <option value="3">Undergraduate</option>
+                                <option value="4">Graduate</option>
+                                <option value="5">Post Graduate</option>
+                                <option value="6">PHD</option>
+                                <option value="7">Other</option>
+                            </select> 
+                          </div>
+                          <div class="col-1" style="width:10%">
+                              <div class="mb-3">
+                                  <label class="label">Part From</label>
+                                  <input type="number" id="PART_NO_FROM_EDUCATION" class="form-control educationListTab form-control-lg" placeholder="">
+                              </div>
+                          </div>
+                          <div class="col-1">
+                              <div class="mb-3">
+                                  <label class="label">Part To</label>
+                                  <input type="number" id="PART_NO_TO_EDUCATION" class="form-control educationListTab form-control-lg" placeholder="">
+                              </div>
+                          </div>
+                          <div class="col-2">
+                              <div class="mb-3">
+                                <button type="button" onclick="$('#action').val('educationListTab');load_data()" style="margin-top:22%;" id="loginBtn" class="btn btn-primary">Search</button>
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div id="homeShift" class="inner-tab-data" style="display:none;margin-top: 2%;margin-bottom: 2%;">
+                        <h5>Home Shifted Voter List</h5>
+                        <div class="row">
+                        <div class="col-2">
+                            <label class="label">Home Shifted</label>
+                            <select id="HOME_SHIFT" class="form-select homeShiftTab">
+                                <option value="" selected>Select</option>
+                                <option value="0">NO</option>
+                                <option value="1">YES</option>
+                            </select> 
+                          </div>
+                          <div class="col-1" style="width:10%">
+                              <div class="mb-3">
+                                  <label class="label">Part From</label>
+                                  <input type="number" id="PART_NO_FROM_HOME_SHIFT" class="form-control homeShiftTab form-control-lg" placeholder="">
+                              </div>
+                          </div>
+                          <div class="col-1">
+                              <div class="mb-3">
+                                  <label class="label">Part To</label>
+                                  <input type="number" id="PART_NO_TO_HOME_SHIFT" class="form-control homeShiftTab form-control-lg" placeholder="">
+                              </div>
+                          </div>
+                          <div class="col-2">
+                              <div class="mb-3">
+                                <button type="button" onclick="$('#action').val('homeShiftTab');load_data()" style="margin-top:22%;" id="loginBtn" class="btn btn-primary">Search</button>
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div id="newVoters" class="inner-tab-data" style="display:none;margin-top: 2%;margin-bottom: 2%;">
+                        <h5>New Voter List</h5>
+                        <div class="row">
+                          <div class="col-1" style="width:10%">
+                              <div class="mb-3">
+                                  <label class="label">Part From</label>
+                                  <input type="number" id="PART_NO_FROM_NEW_VOTER" class="form-control newVotersTab form-control-lg" placeholder="">
+                              </div>
+                          </div>
+                          <div class="col-1">
+                              <div class="mb-3">
+                                  <label class="label">Part To</label>
+                                  <input type="number" id="PART_NO_TO_NEW_VOTER" class="form-control newVotersTab form-control-lg" placeholder="">
+                              </div>
+                          </div>
+                          <div class="col-2">
+                              <div class="mb-3">
+                                <button type="button" onclick="$('#action').val('newVotersTab');load_data()" style="margin-top:22%;" id="loginBtn" class="btn btn-primary">Search</button>
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div id="professional" class="inner-tab-data" style="display:none;margin-top: 2%;margin-bottom: 2%;">
+                        <h5>Profession Voter List</h5>
+                        <div class="row">
+                        <div class="col-2">
+                            <label class="label">Profession</label>
+                            <select id="PROFESSION" class="form-select professionalTab">
+                                <option value="" selected>Select</option>
+                                <option value="0">Student</option>
+                                <option value="1">Unemployed</option>
+                                <option value="2">Self Employed</option>
+                                <option value="3">Farmer</option>
+                                <option value="4">Teacher</option>
+                                <option value="5">Govt Forces</option>
+                                <option value="6">Job Pvt Sector</option>
+                                <option value="7">Job Govt Sector</option>
+                                <option value="8">Police officer</option>
+                                <option value="9">Dentist</option>
+                                <option value="10">Doctor</option>
+                                <option value="11">Journalist</option>
+                                <option value="12">CA / Account</option>
+                                <option value="13">Advocates</option>
+                                <option value="14">Engineer</option>
+                                <option value="15">Local Market Business</option>
+                                <option value="16">Corporate Business</option>
+                                <option value="17">School Owner</option>
+                                <option value="18">Hospital Owner</option>
+                                <option value="19">Multiple Business</option>
+                                <option value="20">Barber Salon</option>
+                                <option value="21">Driving Work Business</option>
+                                <option value="22">GIG WORKER</option>
+                                <option value="23">Daily Mazdoor</option>
+                                <option value="24">Local Market Worker</option>
+                                <option value="25">Other</option>
+                            </select> 
+                          </div>
+                          <div class="col-1" style="width:10%">
+                              <div class="mb-3">
+                                  <label class="label">Part From</label>
+                                  <input type="number" id="PART_NO_FROM_PROFESSION" class="form-control professionalTab form-control-lg" placeholder="">
+                              </div>
+                          </div>
+                          <div class="col-1">
+                              <div class="mb-3">
+                                  <label class="label">Part To</label>
+                                  <input type="number" id="PART_NO_TO_PROFESSION" class="form-control professionalTab form-control-lg" placeholder="">
+                              </div>
+                          </div>
+                          <div class="col-2">
+                              <div class="mb-3">
+                                <button type="button" onclick="$('#action').val('professionalTab');load_data()" style="margin-top:22%;" id="loginBtn" class="btn btn-primary">Search</button>
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div id="outsideLocation" class="inner-tab-data" style="display:none;margin-top: 2%;margin-bottom: 2%;">
+                        <h5>Outside Location Voter List</h5>
+                        <div class="row">
+                        <div class="col-2">
+                            <label class="label">Outside Location</label>
+                            <select id="OUTSIDE_LOCATION" class="form-select outsideLocationTab">
+                                <option value="" selected>Select</option>
+                                <option value="0">NO</option>
+                                <option value="1">YES</option>
+                            </select> 
+                          </div>
+                          <div class="col-1" style="width:10%">
+                              <div class="mb-3">
+                                  <label class="label">Part From</label>
+                                  <input type="number" id="PART_NO_FROM_OUTSIDE_LOC" class="form-control outsideLocationTab form-control-lg" placeholder="">
+                              </div>
+                          </div>
+                          <div class="col-1">
+                              <div class="mb-3">
+                                  <label class="label">Part To</label>
+                                  <input type="number" id="PART_NO_TO_OUTSIDE_LOC" class="form-control outsideLocationTab form-control-lg" placeholder="">
+                              </div>
+                          </div>
+                          <div class="col-2">
+                              <div class="mb-3">
+                                <button type="button" onclick="$('#action').val('outsideLocationTab');load_data()" style="margin-top:22%;" id="loginBtn" class="btn btn-primary">Search</button>
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div id="labharthi" class="inner-tab-data" style="display:none;margin-top: 2%;margin-bottom: 2%;">
+                        <h5>Labharthi Voter List</h5>
+                        <div class="row">
+                          <div class="col-2">
+                            <label class="label">Scheme(Center)</label>
+                            <select id="SCHEME_CENTER" class="form-select labharthiTab">
+                                <option value="" selected>Select</option>
+                            </select> 
+                          </div>
+                          <div class="col-2">
+                            <label class="label">Scheme(State)</label>
+                            <select id="SCHEME_STATE" class="form-select labharthiTab">
+                                <option value="" selected>Select</option>
+                            </select> 
+                          </div>
+                          <div class="col-2">
+                            <label class="label">Scheme(Candidate)</label>
+                            <select id="SCHEME_CANDIDATE" class="form-select labharthiTab">
+                                <option value="" selected>Select</option>
+                            </select> 
+                          </div>
+                          <div class="col-1" style="width:10%">
+                              <div class="mb-3">
+                                  <label class="label">Part From</label>
+                                  <input type="number" id="PART_NO_FROM_LABHARTHI" class="form-control labharthiTab form-control-lg" placeholder="">
+                              </div>
+                          </div>
+                          <div class="col-1">
+                              <div class="mb-3">
+                                  <label class="label">Part To</label>
+                                  <input type="number" id="PART_NO_TO_LABHARTHI" class="form-control labharthiTab form-control-lg" placeholder="">
+                              </div>
+                          </div>
+                          <div class="col-2">
+                              <div class="mb-3">
+                                <button type="button" onclick="$('#action').val('labharthiTab');load_data()" style="margin-top:22%;" id="loginBtn" class="btn btn-primary">Search</button>
+                              </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>    
                   </div>
                 </div> 
@@ -1136,6 +1348,25 @@ $breadCrumbName = "Voter List";
                     DATE_FROM_BIRTHDAY: $('#DATE_FROM_BIRTHDAY').val(),         
                     DATE_TO_BIRTHDAY: $('#DATE_TO_BIRTHDAY').val(),         
                     MONTH_LIST: $('#MONTH_LIST').val(),         
+                    EDUCATION_LIST: $('#EDUCATION_LIST').val(),         
+                    PART_NO_FROM_EDUCATION: $('#PART_NO_FROM_EDUCATION').val(),         
+                    PART_NO_TO_EDUCATION: $('#PART_NO_TO_EDUCATION').val(),         
+                    HOME_SHIFT: $('#HOME_SHIFT').val(),         
+                    PART_NO_FROM_HOME_SHIFT: $('#PART_NO_FROM_HOME_SHIFT').val(),         
+                    PART_NO_TO_HOME_SHIFT: $('#PART_NO_TO_HOME_SHIFT').val(),         
+                    PART_NO_FROM_NEW_VOTER: $('#PART_NO_FROM_NEW_VOTER').val(),         
+                    PART_NO_TO_NEW_VOTER: $('#PART_NO_TO_NEW_VOTER').val(),         
+                    PART_NO_FROM_PROFESSION: $('#PART_NO_FROM_PROFESSION').val(),         
+                    PART_NO_TO_PROFESSION: $('#PART_NO_TO_PROFESSION').val(),         
+                    PROFESSION: $('#PROFESSION').val(),         
+                    PART_NO_FROM_OUTSIDE_LOC: $('#PART_NO_FROM_OUTSIDE_LOC').val(),         
+                    PART_NO_TO_OUTSIDE_LOC: $('#PART_NO_TO_OUTSIDE_LOC').val(),         
+                    OUTSIDE_LOCATION: $('#OUTSIDE_LOCATION').val(),         
+                    SCHEME_CENTER: $('#SCHEME_CENTER').val(),         
+                    SCHEME_STATE: $('#SCHEME_STATE').val(),         
+                    SCHEME_CANDIDATE: $('#SCHEME_CANDIDATE').val(),         
+                    PART_NO_FROM_LABHARTHI: $('#PART_NO_FROM_LABHARTHI').val(),         
+                    PART_NO_TO_LABHARTHI: $('#PART_NO_TO_LABHARTHI').val(),         
                     action: $('#action').val()
                   },  
                   success:function(data){  
@@ -1177,7 +1408,31 @@ function load_other_data(){
                       option_area_list += `<option value="${data.area_list[i].AC_NAME_EN}">${data.area_list[i].AC_NAME_EN}</option>`
                     }
 
+                    //labharthi center
+                    let option_labharthi_list_center = [];
+                    option_labharthi_list_center += '<option value="" selected>Please Select</option>'
+                    for(let i=0; i < data.labharthi_center.length; i++){
+                      option_labharthi_list_center += `<option value="${data.labharthi_center[i].id}">${data.labharthi_center[i].scheme_name}</option>`
+                    }
+
+                    //labharthi state
+                    let option_labharthi_list_state = [];
+                    option_labharthi_list_state += '<option value="" selected>Please Select</option>'
+                    for(let i=0; i < data.labharthi_state.length; i++){
+                      option_labharthi_list_state += `<option value="${data.labharthi_state[i].id}">${data.labharthi_state[i].scheme_name}</option>`
+                    }
+
+                    //labharthi candidate
+                    let option_labharthi_list_candidate = [];
+                    option_labharthi_list_candidate += '<option value="" selected>Please Select</option>'
+                    for(let i=0; i < data.labharthi_candidate.length; i++){
+                      option_labharthi_list_candidate += `<option value="${data.labharthi_candidate[i].id}">${data.labharthi_candidate[i].scheme_name}</option>`
+                    }
+
                   
+                    $('#SCHEME_CENTER').html(option_labharthi_list_center)
+                    $('#SCHEME_STATE').html(option_labharthi_list_state)
+                    $('#SCHEME_CANDIDATE').html(option_labharthi_list_candidate)
                     $('#PARTY_LIST').html(option_political_party)
                     $('#LABEL_VALUE').html(option_voter_label)
                     $('#AREA_LIST').html(option_area_list)
@@ -1204,7 +1459,9 @@ function load_other_data(){
         '.familyHeadTab','.doubleNameTab','.marriedTab','.singleTab',
         '.addressTab','.surnameTab','.familyLabelsTab','.smsTab',
         '.casteTab','.labelValueTab','.areaWiseTab','.wardWiseTab',
-        '.partyWiseTab','.deadListTab','.birthdayTab'
+        '.partyWiseTab','.deadListTab','.birthdayTab','.educationListTab'
+        ,'.homeShiftTab','.newVotersTab','.professionalTab'
+        ,'.outsideLocation','.labharthi'
         ]
         const index = tab.indexOf(tabClass);
         if (index > -1) { // only splice array when item is found

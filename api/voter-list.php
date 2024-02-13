@@ -506,6 +506,119 @@ $page_query = "";
     
     $query = "SELECT * FROM voters_data WHERE $WHERE ORDER BY FM_NAME_EN ASC LIMIT $start_from, $record_per_page";
     $page_query = "SELECT * FROM voters_data WHERE $WHERE ORDER BY FM_NAME_EN ASC";
+ }else if(isset($_POST['action']) && $_POST['action']=='educationListTab'){
+    $WHERE = "";
+    $WHERE .= "leader_id='$user_id'";
+    $PART_NO_FROM_EDUCATION = $_POST['PART_NO_FROM_EDUCATION'];
+    $PART_NO_TO_EDUCATION = $_POST['PART_NO_TO_EDUCATION'];
+    $EDUCATION_LIST = $_POST['EDUCATION_LIST'];
+    if($PART_NO_FROM_EDUCATION!='' && $PART_NO_TO_EDUCATION!=''){
+        $WHERE .= " AND PART_NO BETWEEN $PART_NO_FROM_EDUCATION AND $PART_NO_TO_EDUCATION";
+    }
+    if($PART_NO_FROM_EDUCATION!='' && $PART_NO_TO_EDUCATION==''){
+        $WHERE .= " AND PART_NO=$PART_NO_FROM_EDUCATION";
+    }
+    if($EDUCATION_LIST!=''){
+        $WHERE .= " AND education ='$EDUCATION_LIST'";
+    }
+    
+    $query = "SELECT * FROM voters_data WHERE $WHERE ORDER BY FM_NAME_EN ASC LIMIT $start_from, $record_per_page";
+    $page_query = "SELECT * FROM voters_data WHERE $WHERE ORDER BY FM_NAME_EN ASC";
+ }else if(isset($_POST['action']) && $_POST['action']=='homeShiftTab'){
+    $WHERE = "";
+    $WHERE .= "leader_id='$user_id'";
+    $PART_NO_FROM_HOME_SHIFT = $_POST['PART_NO_FROM_HOME_SHIFT'];
+    $PART_NO_TO_HOME_SHIFT = $_POST['PART_NO_TO_HOME_SHIFT'];
+    $HOME_SHIFT = $_POST['HOME_SHIFT'];
+    if($PART_NO_FROM_HOME_SHIFT!='' && $PART_NO_TO_HOME_SHIFT!=''){
+        $WHERE .= " AND PART_NO BETWEEN $PART_NO_FROM_HOME_SHIFT AND $PART_NO_TO_HOME_SHIFT";
+    }
+    if($PART_NO_FROM_HOME_SHIFT!='' && $PART_NO_TO_HOME_SHIFT==''){
+        $WHERE .= " AND PART_NO=$PART_NO_FROM_HOME_SHIFT";
+    }
+    if($HOME_SHIFT!=''){
+        $WHERE .= " AND isHomeShifted ='$HOME_SHIFT'";
+    }
+    
+    $query = "SELECT * FROM voters_data WHERE $WHERE ORDER BY FM_NAME_EN ASC LIMIT $start_from, $record_per_page";
+    $page_query = "SELECT * FROM voters_data WHERE $WHERE ORDER BY FM_NAME_EN ASC";
+ }else if(isset($_POST['action']) && $_POST['action']=='newVotersTab'){
+    $WHERE = "";
+    $WHERE .= "leader_id='$user_id'";
+    $PART_NO_FROM_NEW_VOTER = $_POST['PART_NO_FROM_NEW_VOTER'];
+    $PART_NO_TO_NEW_VOTER = $_POST['PART_NO_TO_NEW_VOTER'];
+    if($PART_NO_FROM_NEW_VOTER!='' && $PART_NO_TO_NEW_VOTER!=''){
+        $WHERE .= " AND PART_NO BETWEEN $PART_NO_FROM_NEW_VOTER AND $PART_NO_TO_NEW_VOTER";
+    }
+    if($PART_NO_FROM_NEW_VOTER!='' && $PART_NO_TO_NEW_VOTER==''){
+        $WHERE .= " AND PART_NO=$PART_NO_FROM_NEW_VOTER";
+    }
+    $WHERE .= " AND DATE_FORMAT(NOW(), '%Y') - DATE_FORMAT(voters_data.DOB, '%Y') - (DATE_FORMAT(NOW(), '00-%m-%d') <DATE_FORMAT(voters_data.DOB,'00-%m-%d')) < 24";
+    
+    $query = "SELECT voters_data.*,DATE_FORMAT(NOW(), '%Y') - DATE_FORMAT(voters_data.DOB, '%Y') - (DATE_FORMAT(NOW(), '00-%m-%d') < DATE_FORMAT(voters_data.DOB, '00-%m-%d')) AS finalAge FROM voters_data WHERE $WHERE ORDER BY FM_NAME_EN ASC LIMIT $start_from, $record_per_page";
+    $page_query = "SELECT voters_data.*,DATE_FORMAT(NOW(), '%Y') - DATE_FORMAT(voters_data.DOB, '%Y') - (DATE_FORMAT(NOW(), '00-%m-%d') < DATE_FORMAT(voters_data.DOB, '00-%m-%d')) AS finalAge FROM voters_data WHERE $WHERE ORDER BY FM_NAME_EN ASC";
+ }else if(isset($_POST['action']) && $_POST['action']=='professionalTab'){
+    $WHERE = "";
+    $WHERE .= "leader_id='$user_id'";
+    $PART_NO_FROM_PROFESSION = $_POST['PART_NO_FROM_PROFESSION'];
+    $PART_NO_TO_PROFESSION = $_POST['PART_NO_TO_PROFESSION'];
+    $PROFESSION = $_POST['PROFESSION'];
+    if($PART_NO_FROM_PROFESSION!='' && $PART_NO_TO_PROFESSION!=''){
+        $WHERE .= " AND PART_NO BETWEEN $PART_NO_FROM_PROFESSION AND $PART_NO_TO_PROFESSION";
+    }
+    if($PART_NO_FROM_PROFESSION!='' && $PART_NO_TO_PROFESSION==''){
+        $WHERE .= " AND PART_NO=$PART_NO_FROM_PROFESSION";
+    }
+    if($PROFESSION!=''){
+        $WHERE .= " AND profession ='$PROFESSION'";
+    }
+    
+    $query = "SELECT * FROM voters_data WHERE $WHERE ORDER BY FM_NAME_EN ASC LIMIT $start_from, $record_per_page";
+    $page_query = "SELECT * FROM voters_data WHERE $WHERE ORDER BY FM_NAME_EN ASC";
+ }else if(isset($_POST['action']) && $_POST['action']=='outsideLocationTab'){
+    $WHERE = "";
+    $WHERE .= "leader_id='$user_id'";
+    $PART_NO_FROM_OUTSIDE_LOC = $_POST['PART_NO_FROM_OUTSIDE_LOC'];
+    $PART_NO_TO_OUTSIDE_LOC = $_POST['PART_NO_TO_OUTSIDE_LOC'];
+    $OUTSIDE_LOCATION = $_POST['OUTSIDE_LOCATION'];
+    if($PART_NO_FROM_OUTSIDE_LOC!='' && $PART_NO_TO_OUTSIDE_LOC!=''){
+        $WHERE .= " AND PART_NO BETWEEN $PART_NO_FROM_OUTSIDE_LOC AND $PART_NO_TO_OUTSIDE_LOC";
+    }
+    if($PART_NO_FROM_OUTSIDE_LOC!='' && $PART_NO_TO_OUTSIDE_LOC==''){
+        $WHERE .= " AND PART_NO=$PART_NO_FROM_OUTSIDE_LOC";
+    }
+    if($OUTSIDE_LOCATION!=''){
+        $WHERE .= " AND isStayingOutside ='$OUTSIDE_LOCATION'";
+    }
+    
+    $query = "SELECT * FROM voters_data WHERE $WHERE ORDER BY FM_NAME_EN ASC LIMIT $start_from, $record_per_page";
+    $page_query = "SELECT * FROM voters_data WHERE $WHERE ORDER BY FM_NAME_EN ASC";
+ }else if(isset($_POST['action']) && $_POST['action']=='labharthiTab'){
+    $WHERE = "";
+    $WHERE .= "leader_id='$user_id'";
+    $PART_NO_FROM_LABHARTHI = $_POST['PART_NO_FROM_LABHARTHI'];
+    $PART_NO_TO_LABHARTHI = $_POST['PART_NO_TO_LABHARTHI'];
+    $SCHEME_CENTER = $_POST['SCHEME_CENTER'];
+    $SCHEME_STATE = $_POST['SCHEME_STATE'];
+    $SCHEME_CANDIDATE = $_POST['SCHEME_CANDIDATE'];
+    if($PART_NO_FROM_LABHARTHI!='' && $PART_NO_TO_LABHARTHI!=''){
+        $WHERE .= " AND PART_NO BETWEEN $PART_NO_FROM_LABHARTHI AND $PART_NO_TO_LABHARTHI";
+    }
+    if($PART_NO_FROM_LABHARTHI!='' && $PART_NO_TO_LABHARTHI==''){
+        $WHERE .= " AND PART_NO=$PART_NO_FROM_LABHARTHI";
+    }
+    if($SCHEME_CENTER!=''){
+        $WHERE .= " AND labharthi_center ='$SCHEME_CENTER'";
+    }
+    if($SCHEME_STATE!=''){
+        $WHERE .= " AND labharthi_state ='$SCHEME_STATE'";
+    }
+    if($SCHEME_CANDIDATE!=''){
+        $WHERE .= " AND labharthi_candidate ='$SCHEME_CANDIDATE'";
+    }
+    $query = "SELECT * FROM voters_data WHERE $WHERE ORDER BY FM_NAME_EN ASC LIMIT $start_from, $record_per_page";
+    $page_query = "SELECT * FROM voters_data WHERE $WHERE ORDER BY FM_NAME_EN ASC";
+    
  }else{
     $query = "SELECT * FROM voters_data WHERE leader_id='$user_id' ORDER BY id ASC LIMIT $start_from, $record_per_page";  
     $page_query = "SELECT * FROM voters_data WHERE leader_id='$user_id' ORDER BY id ASC";  
@@ -640,6 +753,126 @@ $page_query = "";
       </thead> 
       <tbody>
 "; 
+ }else if(isset($_POST['action']) && $_POST['action']=='educationListTab') {
+    $output .= "  
+    <table class='table align-items-center mb-0'>  
+      <thead>
+          <tr>
+            <th>Sl</th>
+            <th>Name</th>
+            <th>Father/Husband Name</th>
+            <th>Gender</th>
+            <th>Age</th>
+            <th>Mobile No.</th>
+            <th>Voter ID</th>
+            <th>Part</th>
+            <th>Address</th>
+            <th>Education</th>
+            <th>Action</th>
+          </tr>
+      </thead> 
+      <tbody>
+"; 
+ }else if(isset($_POST['action']) && $_POST['action']=='homeShiftTab') {
+    $output .= "  
+    <table class='table align-items-center mb-0'>  
+      <thead>
+          <tr>
+            <th>Sl</th>
+            <th>Name</th>
+            <th>Father/Husband Name</th>
+            <th>Gender</th>
+            <th>Age</th>
+            <th>Mobile No.</th>
+            <th>Voter ID</th>
+            <th>Part</th>
+            <th>Address</th>
+            <th>Home Shifted</th>
+            <th>Action</th>
+          </tr>
+      </thead> 
+      <tbody>
+"; 
+ }else if(isset($_POST['action']) && $_POST['action']=='newVotersTab') {
+    $output .= "  
+    <table class='table align-items-center mb-0'>  
+      <thead>
+          <tr>
+            <th>Sl</th>
+            <th>Name</th>
+            <th>Father/Husband Name</th>
+            <th>Gender</th>
+            <th>Mobile No.</th>
+            <th>Voter ID</th>
+            <th>Part</th>
+            <th>Address</th>
+            <th>Age</th>
+            <th>Action</th>
+          </tr>
+      </thead> 
+      <tbody>
+"; 
+ }else if(isset($_POST['action']) && $_POST['action']=='professionalTab') {
+    $output .= "  
+    <table class='table align-items-center mb-0'>  
+      <thead>
+          <tr>
+            <th>Sl</th>
+            <th>Name</th>
+            <th>Father/Husband Name</th>
+            <th>Gender</th>
+            <th>Mobile No.</th>
+            <th>Voter ID</th>
+            <th>Part</th>
+            <th>Address</th>
+            <th>Profession</th>
+            <th>Action</th>
+          </tr>
+      </thead> 
+      <tbody>
+"; 
+ }else if(isset($_POST['action']) && $_POST['action']=='outsideLocationTab') {
+    $output .= "  
+    <table class='table align-items-center mb-0'>  
+      <thead>
+          <tr>
+            <th>Sl</th>
+            <th>Name</th>
+            <th>Father/Husband Name</th>
+            <th>Gender</th>
+            <th>Age</th>
+            <th>Mobile No.</th>
+            <th>Voter ID</th>
+            <th>Part</th>
+            <th>Address</th>
+            <th>Staying Outside</th>
+            <th>Action</th>
+          </tr>
+      </thead> 
+      <tbody>
+"; 
+ }else if(isset($_POST['action']) && $_POST['action']=='labharthiTab') {
+    $output .= "  
+    <table class='table align-items-center mb-0'>  
+      <thead>
+          <tr>
+            <th>Sl</th>
+            <th>Name</th>
+            <th>Father/Husband Name</th>
+            <th>Gender</th>
+            <th>Age</th>
+            <th>Mobile No.</th>
+            <th>Voter ID</th>
+            <th>Part</th>
+            <th>Address</th>
+            <th>Labharthi Center</th>
+            <th>Labharthi State</th>
+            <th>Labharthi Candidate</th>
+            <th>Action</th>
+          </tr>
+      </thead> 
+      <tbody>
+"; 
  }else{
  $output .= "  
       <table class='table align-items-center mb-0'>  
@@ -659,6 +892,162 @@ $page_query = "";
         </thead> 
         <tbody>
  ";  
+ }
+
+ function educationData($val,$other){
+    switch ($val) {
+        case "0":
+          return "Uneducated";
+          break;
+        case "1":
+          return "10th";
+          break;
+        case "2":
+          return "12th";
+          break;
+        case "3":
+          return "Undergraduate";
+          break;
+        case "4":
+          return "Graduate";
+          break;
+        case "5":
+            return "Post Graduate";
+            break;
+        case "6":
+            return "PHD";
+            break;
+        case "7":
+            return "Other(".$other.")";
+            break;
+        default:
+          return "N/A";
+    }
+ }
+
+ function professionData($val,$other){
+    switch ($val) {
+        case "0":
+          return "Student";
+          break;
+        case "1":
+          return "Unemployed";
+          break;
+        case "2":
+          return "Self Employed";
+          break;
+        case "3":
+          return "Farmer";
+          break;
+        case "4":
+          return "Teacher";
+          break;
+        case "5":
+            return "Govt Forces";
+            break;
+        case "6":
+            return "Job Pvt Sector";
+            break;
+        case "7":
+            return "Job Govt Sector";
+            break;
+        case "8":
+            return "Police officer";
+            break;
+        case "9":
+            return "Dentist";
+            break;
+        case "10":
+            return "Doctor";
+            break;
+        case "11":
+            return "Journalist";
+            break;
+        case "12":
+            return "CA / Account";
+            break;
+        case "13":
+            return "Advocates";
+            break;
+        case "14":
+            return "Engineer";
+            break;
+        case "15":
+            return "Local Market Business";
+            break;
+        case "16":
+            return "Corporate Business";
+            break;
+        case "17":
+            return "School Owner";
+            break;
+        case "18":
+            return "Hospital Owner";
+            break;
+        case "19":
+            return "Multiple Business";
+            break;
+        case "20":
+            return "Barber Salon";
+            break;
+        case "21":
+            return "Driving Work Business";
+            break;
+        case "22":
+            return "GIG WORKER";
+            break;
+        case "23":
+            return "Daily Mazdoor";
+            break;
+        case "24":
+            return "Local Market Worker";
+            break;
+        case "25":
+            return "Other(".$other.")";       
+        default:
+          return "N/A";
+    }
+ }
+
+ function homeShift($isHomeShifted,$isHomeShiftedWithin,$shiftedAddress,$shifted_country,$shifted_state,$shifted_city,$shifted_address){
+    include ('../config/conn.php');
+    switch ($isHomeShifted) {
+        case "0":
+          return "No";
+          break;
+        case "1":
+            if($isHomeShiftedWithin==0){
+                return $shiftedAddress."(Home Shifted Within)";
+            }else if($isHomeShiftedWithin==1){
+                $q = "SELECT countries.id,countries.name as countryName, states.name as stateName, cities.city as cityName FROM `countries` LEFT JOIN states ON states.country_id=countries.id LEFT JOIN cities ON cities.state_id = states.id WHERE countries.id=$shifted_country AND states.id=$shifted_state AND cities.id=$shifted_city";
+                $r = mysqli_query($conn, $q);
+                $row2 = mysqli_fetch_assoc($r);
+                $countryName = $row2['countryName']; 
+                $stateName = $row2['stateName']; 
+                $cityName = $row2['cityName']; 
+                return $shifted_address.",".$cityName.",".$stateName.",".$countryName;
+            }
+          break;
+        default:
+          return "N/A";
+    }
+ }
+
+ function getLabharthi($labharthi){
+    include ('../config/conn.php');
+    if($labharthi!=NULL){
+        $q3 = "SELECT * FROM labharthi_scheme WHERE id=$labharthi";
+        $r3 = mysqli_query($conn, $q3);
+        $row3 = mysqli_fetch_assoc($r3);
+        if(mysqli_num_rows($r3)>0){
+            return $row3['scheme_name'];
+        }else{
+            return "N/A";
+        }
+    }else{
+        return "N/A";
+    }
+    
  }
 
  while($row = mysqli_fetch_array($result))  
@@ -1139,6 +1528,582 @@ $page_query = "";
                 </td> 
                 <td class="align-middle">
                     '.$row['DOB'].'
+                </td> 
+                <td class="align-middle">
+                    <div class="dp">
+                        <a class="btn dp-menu" type="button" data-toggle="dropdown" aria-expanded="false">
+                            <svg width="12" height="14" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                            </svg>
+                        </a>
+                        <ul class="dropdown-menu drop-menu dropdown-menu-dark bg-dark" role="menu" style="right:0">
+                            <li><a class="dropdown-item" href="edit-voters.php?id='.$row['id'].'&candidate_id='.$user_id.'">Edit</a></li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+                ';  
+        }
+    }else if(isset($_POST['action']) && $_POST['action']=='educationListTab') {
+        if($language=='english'){
+            $output .= '  
+            <tr>
+                <td class="align-middle">
+                    '.$slNo.'
+                </td>
+                <td class="align-middle">
+                <a class="" href="edit-voters.php?id='.$row['id'].'&candidate_id='.$user_id.'">'.$row['FM_NAME_EN'].' '.$row['LASTNAME_EN'].'</a>
+                </td>
+                <td class="align-middle">
+                    '.$row['RLN_FM_NM_EN'].' ('.$row['RLN_TYPE'].')
+                </td>
+                <td class="align-middle">
+                    '.$row['GENDER'].'
+                </td>
+                <td class="align-middle">
+                    '.$row['AGE'].'
+                </td>
+                <td class="align-middle">
+                    '.$row['MOBILE_NO'].'
+                </td>
+                <td class="align-middle">
+                    '.$row['EPIC_NO'].'
+                </td>
+                <td class="align-middle">
+                    '.$row['PART_NO'].'
+                </td>
+                <td class="align-middle">
+                    '.$row['SECTION_NAME_EN'].'
+                </td> 
+                <td class="align-middle">
+                    '.educationData($row['education'],$row['other_education']).'
+                </td> 
+                <td class="align-middle">
+                    <div class="dp">
+                        <a class="btn dp-menu" type="button" data-toggle="dropdown" aria-expanded="false">
+                            <svg width="12" height="14" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                            </svg>
+                        </a>
+                        <ul class="dropdown-menu drop-menu dropdown-menu-dark bg-dark" role="menu" style="right:0">
+                            <li><a class="dropdown-item" href="edit-voters.php?id='.$row['id'].'&candidate_id='.$user_id.'">Edit</a></li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+                ';  
+        }else{
+            $output .= '  
+            <tr>
+                <td class="align-middle">
+                    '.$slNo.'
+                </td>
+                <td class="align-middle">
+                <a class="" href="edit-voters.php?id='.$row['id'].'&candidate_id='.$user_id.'">'.$row['FM_NAME_V1'].' '.$row['LASTNAME_V1'].'</a>
+                </td>
+                <td class="align-middle">
+                    '.$row['RLN_FM_NM_V1'].' ('.$row['RLN_TYPE'].')
+                </td>
+                <td class="align-middle">
+                    '.$row['GENDER'].'
+                </td>
+                <td class="align-middle">
+                    '.$row['AGE'].'
+                </td>
+                <td class="align-middle">
+                    '.$row['MOBILE_NO'].'
+                </td>
+                <td class="align-middle">
+                    '.$row['EPIC_NO'].'
+                </td>
+                <td class="align-middle">
+                    '.$row['PART_NO'].'
+                </td>
+                <td class="align-middle">
+                    '.$row['SECTION_NAME_V1'].'
+                </td> 
+                <td class="align-middle">
+                    '.educationData($row['education'],$row['other_education']).'
+                </td> 
+                <td class="align-middle">
+                    <div class="dp">
+                        <a class="btn dp-menu" type="button" data-toggle="dropdown" aria-expanded="false">
+                            <svg width="12" height="14" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                            </svg>
+                        </a>
+                        <ul class="dropdown-menu drop-menu dropdown-menu-dark bg-dark" role="menu" style="right:0">
+                            <li><a class="dropdown-item" href="edit-voters.php?id='.$row['id'].'&candidate_id='.$user_id.'">Edit</a></li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+                ';  
+        }
+    }else if(isset($_POST['action']) && $_POST['action']=='homeShiftTab') {
+        if($language=='english'){
+            $output .= '  
+            <tr>
+                <td class="align-middle">
+                    '.$slNo.'
+                </td>
+                <td class="align-middle">
+                <a class="" href="edit-voters.php?id='.$row['id'].'&candidate_id='.$user_id.'">'.$row['FM_NAME_EN'].' '.$row['LASTNAME_EN'].'</a>
+                </td>
+                <td class="align-middle">
+                    '.$row['RLN_FM_NM_EN'].' ('.$row['RLN_TYPE'].')
+                </td>
+                <td class="align-middle">
+                    '.$row['GENDER'].'
+                </td>
+                <td class="align-middle">
+                    '.$row['AGE'].'
+                </td>
+                <td class="align-middle">
+                    '.$row['MOBILE_NO'].'
+                </td>
+                <td class="align-middle">
+                    '.$row['EPIC_NO'].'
+                </td>
+                <td class="align-middle">
+                    '.$row['PART_NO'].'
+                </td>
+                <td class="align-middle">
+                    '.$row['SECTION_NAME_EN'].'
+                </td> 
+                <td class="align-middle">
+                    '.homeShift($row['isHomeShifted'],$row['isHomeShiftedWithin'],$row['shiftedAddress'],$row['shifted_country'],$row['shifted_state'],$row['shifted_city'],$row['shifted_address']).'
+                </td> 
+                <td class="align-middle">
+                    <div class="dp">
+                        <a class="btn dp-menu" type="button" data-toggle="dropdown" aria-expanded="false">
+                            <svg width="12" height="14" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                            </svg>
+                        </a>
+                        <ul class="dropdown-menu drop-menu dropdown-menu-dark bg-dark" role="menu" style="right:0">
+                            <li><a class="dropdown-item" href="edit-voters.php?id='.$row['id'].'&candidate_id='.$user_id.'">Edit</a></li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+                ';  
+        }else{
+            $output .= '  
+            <tr>
+                <td class="align-middle">
+                    '.$slNo.'
+                </td>
+                <td class="align-middle">
+                <a class="" href="edit-voters.php?id='.$row['id'].'&candidate_id='.$user_id.'">'.$row['FM_NAME_V1'].' '.$row['LASTNAME_V1'].'</a>
+                </td>
+                <td class="align-middle">
+                    '.$row['RLN_FM_NM_V1'].' ('.$row['RLN_TYPE'].')
+                </td>
+                <td class="align-middle">
+                    '.$row['GENDER'].'
+                </td>
+                <td class="align-middle">
+                    '.$row['AGE'].'
+                </td>
+                <td class="align-middle">
+                    '.$row['MOBILE_NO'].'
+                </td>
+                <td class="align-middle">
+                    '.$row['EPIC_NO'].'
+                </td>
+                <td class="align-middle">
+                    '.$row['PART_NO'].'
+                </td>
+                <td class="align-middle">
+                    '.$row['SECTION_NAME_V1'].'
+                </td> 
+                <td class="align-middle">
+                '.homeShift($row['isHomeShifted'],$row['isHomeShiftedWithin'],$row['shiftedAddress'],$row['shifted_country'],$row['shifted_state'],$row['shifted_city'],$row['shifted_address']).'
+                </td> 
+                <td class="align-middle">
+                    <div class="dp">
+                        <a class="btn dp-menu" type="button" data-toggle="dropdown" aria-expanded="false">
+                            <svg width="12" height="14" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                            </svg>
+                        </a>
+                        <ul class="dropdown-menu drop-menu dropdown-menu-dark bg-dark" role="menu" style="right:0">
+                            <li><a class="dropdown-item" href="edit-voters.php?id='.$row['id'].'&candidate_id='.$user_id.'">Edit</a></li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+                ';  
+        }
+    }else if(isset($_POST['action']) && $_POST['action']=='newVotersTab') {
+        if($language=='english'){
+            $output .= '  
+            <tr>
+                <td class="align-middle">
+                    '.$slNo.'
+                </td>
+                <td class="align-middle">
+                <a class="" href="edit-voters.php?id='.$row['id'].'&candidate_id='.$user_id.'">'.$row['FM_NAME_EN'].' '.$row['LASTNAME_EN'].'</a>
+                </td>
+                <td class="align-middle">
+                    '.$row['RLN_FM_NM_EN'].' ('.$row['RLN_TYPE'].')
+                </td>
+                <td class="align-middle">
+                    '.$row['GENDER'].'
+                </td>
+                <td class="align-middle">
+                    '.$row['MOBILE_NO'].'
+                </td>
+                <td class="align-middle">
+                    '.$row['EPIC_NO'].'
+                </td>
+                <td class="align-middle">
+                    '.$row['PART_NO'].'
+                </td>
+                <td class="align-middle">
+                    '.$row['SECTION_NAME_EN'].'
+                </td> 
+                <td class="align-middle">
+                    '.$row['finalAge'].'y
+                </td> 
+                <td class="align-middle">
+                    <div class="dp">
+                        <a class="btn dp-menu" type="button" data-toggle="dropdown" aria-expanded="false">
+                            <svg width="12" height="14" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                            </svg>
+                        </a>
+                        <ul class="dropdown-menu drop-menu dropdown-menu-dark bg-dark" role="menu" style="right:0">
+                            <li><a class="dropdown-item" href="edit-voters.php?id='.$row['id'].'&candidate_id='.$user_id.'">Edit</a></li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+                ';  
+        }else{
+            $output .= '  
+            <tr>
+                <td class="align-middle">
+                    '.$slNo.'
+                </td>
+                <td class="align-middle">
+                <a class="" href="edit-voters.php?id='.$row['id'].'&candidate_id='.$user_id.'">'.$row['FM_NAME_V1'].' '.$row['LASTNAME_V1'].'</a>
+                </td>
+                <td class="align-middle">
+                    '.$row['RLN_FM_NM_V1'].' ('.$row['RLN_TYPE'].')
+                </td>
+                <td class="align-middle">
+                    '.$row['GENDER'].'
+                </td>
+                <td class="align-middle">
+                    '.$row['MOBILE_NO'].'
+                </td>
+                <td class="align-middle">
+                    '.$row['EPIC_NO'].'
+                </td>
+                <td class="align-middle">
+                    '.$row['PART_NO'].'
+                </td>
+                <td class="align-middle">
+                    '.$row['SECTION_NAME_V1'].'
+                </td> 
+                <td class="align-middle">
+                '.$row['finalAge'].'y
+                </td> 
+                <td class="align-middle">
+                    <div class="dp">
+                        <a class="btn dp-menu" type="button" data-toggle="dropdown" aria-expanded="false">
+                            <svg width="12" height="14" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                            </svg>
+                        </a>
+                        <ul class="dropdown-menu drop-menu dropdown-menu-dark bg-dark" role="menu" style="right:0">
+                            <li><a class="dropdown-item" href="edit-voters.php?id='.$row['id'].'&candidate_id='.$user_id.'">Edit</a></li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+                ';  
+        }
+    }else if(isset($_POST['action']) && $_POST['action']=='professionalTab') {
+        if($language=='english'){
+            $output .= '  
+            <tr>
+                <td class="align-middle">
+                    '.$slNo.'
+                </td>
+                <td class="align-middle">
+                <a class="" href="edit-voters.php?id='.$row['id'].'&candidate_id='.$user_id.'">'.$row['FM_NAME_EN'].' '.$row['LASTNAME_EN'].'</a>
+                </td>
+                <td class="align-middle">
+                    '.$row['RLN_FM_NM_EN'].' ('.$row['RLN_TYPE'].')
+                </td>
+                <td class="align-middle">
+                    '.$row['GENDER'].'
+                </td>
+                <td class="align-middle">
+                    '.$row['MOBILE_NO'].'
+                </td>
+                <td class="align-middle">
+                    '.$row['EPIC_NO'].'
+                </td>
+                <td class="align-middle">
+                    '.$row['PART_NO'].'
+                </td>
+                <td class="align-middle">
+                    '.$row['SECTION_NAME_EN'].'
+                </td> 
+                <td class="align-middle">
+                    '.professionData($row['profession'],$row['other_profession']).'
+                </td> 
+                <td class="align-middle">
+                    <div class="dp">
+                        <a class="btn dp-menu" type="button" data-toggle="dropdown" aria-expanded="false">
+                            <svg width="12" height="14" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                            </svg>
+                        </a>
+                        <ul class="dropdown-menu drop-menu dropdown-menu-dark bg-dark" role="menu" style="right:0">
+                            <li><a class="dropdown-item" href="edit-voters.php?id='.$row['id'].'&candidate_id='.$user_id.'">Edit</a></li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+                ';  
+        }else{
+            $output .= '  
+            <tr>
+                <td class="align-middle">
+                    '.$slNo.'
+                </td>
+                <td class="align-middle">
+                <a class="" href="edit-voters.php?id='.$row['id'].'&candidate_id='.$user_id.'">'.$row['FM_NAME_V1'].' '.$row['LASTNAME_V1'].'</a>
+                </td>
+                <td class="align-middle">
+                    '.$row['RLN_FM_NM_V1'].' ('.$row['RLN_TYPE'].')
+                </td>
+                <td class="align-middle">
+                    '.$row['GENDER'].'
+                </td>
+                <td class="align-middle">
+                    '.$row['MOBILE_NO'].'
+                </td>
+                <td class="align-middle">
+                    '.$row['EPIC_NO'].'
+                </td>
+                <td class="align-middle">
+                    '.$row['PART_NO'].'
+                </td>
+                <td class="align-middle">
+                    '.$row['SECTION_NAME_V1'].'
+                </td> 
+                <td class="align-middle">
+                '.professionData($row['profession'],$row['other_profession']).'
+                </td> 
+                <td class="align-middle">
+                    <div class="dp">
+                        <a class="btn dp-menu" type="button" data-toggle="dropdown" aria-expanded="false">
+                            <svg width="12" height="14" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                            </svg>
+                        </a>
+                        <ul class="dropdown-menu drop-menu dropdown-menu-dark bg-dark" role="menu" style="right:0">
+                            <li><a class="dropdown-item" href="edit-voters.php?id='.$row['id'].'&candidate_id='.$user_id.'">Edit</a></li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+                ';  
+        }
+    }else if(isset($_POST['action']) && $_POST['action']=='outsideLocationTab') {
+        if($language=='english'){
+            $output .= '  
+            <tr>
+                <td class="align-middle">
+                    '.$slNo.'
+                </td>
+                <td class="align-middle">
+                <a class="" href="edit-voters.php?id='.$row['id'].'&candidate_id='.$user_id.'">'.$row['FM_NAME_EN'].' '.$row['LASTNAME_EN'].'</a>
+                </td>
+                <td class="align-middle">
+                    '.$row['RLN_FM_NM_EN'].' ('.$row['RLN_TYPE'].')
+                </td>
+                <td class="align-middle">
+                    '.$row['GENDER'].'
+                </td>
+                <td class="align-middle">
+                    '.$row['AGE'].'
+                </td>
+                <td class="align-middle">
+                    '.$row['MOBILE_NO'].'
+                </td>
+                <td class="align-middle">
+                    '.$row['EPIC_NO'].'
+                </td>
+                <td class="align-middle">
+                    '.$row['PART_NO'].'
+                </td>
+                <td class="align-middle">
+                    '.$row['SECTION_NAME_EN'].'
+                </td> 
+                <td class="align-middle">
+                    '.homeShift($row['isStayingOutside'],$row['isStayingOutsideWithin'],$row['stayingAddress'],$row['staying_country'],$row['staying_state'],$row['staying_city'],$row['staying_address']).'
+                </td> 
+                <td class="align-middle">
+                    <div class="dp">
+                        <a class="btn dp-menu" type="button" data-toggle="dropdown" aria-expanded="false">
+                            <svg width="12" height="14" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                            </svg>
+                        </a>
+                        <ul class="dropdown-menu drop-menu dropdown-menu-dark bg-dark" role="menu" style="right:0">
+                            <li><a class="dropdown-item" href="edit-voters.php?id='.$row['id'].'&candidate_id='.$user_id.'">Edit</a></li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+                ';  
+        }else{
+            $output .= '  
+            <tr>
+                <td class="align-middle">
+                    '.$slNo.'
+                </td>
+                <td class="align-middle">
+                <a class="" href="edit-voters.php?id='.$row['id'].'&candidate_id='.$user_id.'">'.$row['FM_NAME_V1'].' '.$row['LASTNAME_V1'].'</a>
+                </td>
+                <td class="align-middle">
+                    '.$row['RLN_FM_NM_V1'].' ('.$row['RLN_TYPE'].')
+                </td>
+                <td class="align-middle">
+                    '.$row['GENDER'].'
+                </td>
+                <td class="align-middle">
+                    '.$row['AGE'].'
+                </td>
+                <td class="align-middle">
+                    '.$row['MOBILE_NO'].'
+                </td>
+                <td class="align-middle">
+                    '.$row['EPIC_NO'].'
+                </td>
+                <td class="align-middle">
+                    '.$row['PART_NO'].'
+                </td>
+                <td class="align-middle">
+                    '.$row['SECTION_NAME_V1'].'
+                </td> 
+                <td class="align-middle">
+                '.homeShift($row['isStayingOutside'],$row['isStayingOutsideWithin'],$row['stayingAddress'],$row['staying_country'],$row['staying_state'],$row['staying_city'],$row['staying_address']).'               
+                </td> 
+                <td class="align-middle">
+                    <div class="dp">
+                        <a class="btn dp-menu" type="button" data-toggle="dropdown" aria-expanded="false">
+                            <svg width="12" height="14" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                            </svg>
+                        </a>
+                        <ul class="dropdown-menu drop-menu dropdown-menu-dark bg-dark" role="menu" style="right:0">
+                            <li><a class="dropdown-item" href="edit-voters.php?id='.$row['id'].'&candidate_id='.$user_id.'">Edit</a></li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+                ';  
+        }
+    }else if(isset($_POST['action']) && $_POST['action']=='labharthiTab') {
+        if($language=='english'){
+            $output .= '  
+            <tr>
+                <td class="align-middle">
+                    '.$slNo.'
+                </td>
+                <td class="align-middle">
+                <a class="" href="edit-voters.php?id='.$row['id'].'&candidate_id='.$user_id.'">'.$row['FM_NAME_EN'].' '.$row['LASTNAME_EN'].'</a>
+                </td>
+                <td class="align-middle">
+                    '.$row['RLN_FM_NM_EN'].' ('.$row['RLN_TYPE'].')
+                </td>
+                <td class="align-middle">
+                    '.$row['GENDER'].'
+                </td>
+                <td class="align-middle">
+                    '.$row['AGE'].'
+                </td>
+                <td class="align-middle">
+                    '.$row['MOBILE_NO'].'
+                </td>
+                <td class="align-middle">
+                    '.$row['EPIC_NO'].'
+                </td>
+                <td class="align-middle">
+                    '.$row['PART_NO'].'
+                </td>
+                <td class="align-middle">
+                    '.$row['SECTION_NAME_EN'].'
+                </td> 
+                <td class="align-middle">
+                    '.getLabharthi($row['labharthi_center']).'
+                </td> 
+                <td class="align-middle">
+                    '.getLabharthi($row['labharthi_state']).'
+                </td> 
+                <td class="align-middle">
+                    '.getLabharthi($row['labharthi_candidate']).'
+                </td> 
+                <td class="align-middle">
+                    <div class="dp">
+                        <a class="btn dp-menu" type="button" data-toggle="dropdown" aria-expanded="false">
+                            <svg width="12" height="14" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                            </svg>
+                        </a>
+                        <ul class="dropdown-menu drop-menu dropdown-menu-dark bg-dark" role="menu" style="right:0">
+                            <li><a class="dropdown-item" href="edit-voters.php?id='.$row['id'].'&candidate_id='.$user_id.'">Edit</a></li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+                ';  
+        }else{
+            $output .= '  
+            <tr>
+                <td class="align-middle">
+                    '.$slNo.'
+                </td>
+                <td class="align-middle">
+                <a class="" href="edit-voters.php?id='.$row['id'].'&candidate_id='.$user_id.'">'.$row['FM_NAME_V1'].' '.$row['LASTNAME_V1'].'</a>
+                </td>
+                <td class="align-middle">
+                    '.$row['RLN_FM_NM_V1'].' ('.$row['RLN_TYPE'].')
+                </td>
+                <td class="align-middle">
+                    '.$row['GENDER'].'
+                </td>
+                <td class="align-middle">
+                    '.$row['AGE'].'
+                </td>
+                <td class="align-middle">
+                    '.$row['MOBILE_NO'].'
+                </td>
+                <td class="align-middle">
+                    '.$row['EPIC_NO'].'
+                </td>
+                <td class="align-middle">
+                    '.$row['PART_NO'].'
+                </td>
+                <td class="align-middle">
+                    '.$row['SECTION_NAME_V1'].'
+                </td> 
+                <td class="align-middle">
+                '.getLabharthi($row['labharthi_center']).'
+                </td> 
+                <td class="align-middle">
+                    '.getLabharthi($row['labharthi_state']).'
+                </td> 
+                <td class="align-middle">
+                    '.getLabharthi($row['labharthi_candidate']).'
                 </td> 
                 <td class="align-middle">
                     <div class="dp">

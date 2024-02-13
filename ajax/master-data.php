@@ -375,6 +375,12 @@ if(isset($_POST) && $_POST['country']!=''){
     }
 }
 
+if(isset($_POST) && $_POST['action']=='delete_scheme'){
+    $state = [];
+    $q1 = "DELETE FROM labharthi_scheme WHERE id=".$_POST['id'];
+    $r1 = mysqli_query($conn,$q1);
+}
+
 
 
 
