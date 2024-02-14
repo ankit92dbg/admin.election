@@ -1218,6 +1218,78 @@ $breadCrumbName = "Voter List";
                           </div>
                         </div>
                       </div>
+
+                      <div id="approach" class="inner-tab-data" style="display:none;margin-top: 2%;margin-bottom: 2%;">
+                        <h5>Approach Qty Voter List</h5>
+                        <div class="row">
+                          <div class="col-2">
+                              <div class="mb-3">
+                                  <label class="label">Approach Qty</label>
+                                  <input type="number" id="APPROACH_QTY" class="form-control approachTab form-control-lg" placeholder="">
+                              </div>
+                          </div>
+                          <div class="col-3">
+                              <div class="mb-3">
+                                  <label class="label">Approach Reason</label>
+                                  <input type="text" id="APPROACH_REASON" class="form-control approachTab form-control-lg" placeholder="">
+                              </div>
+                          </div>
+                          <div class="col-1" style="width:10%">
+                              <div class="mb-3">
+                                  <label class="label">Part From</label>
+                                  <input type="number" id="PART_NO_FROM_APPROACH_QTY" class="form-control approachTab form-control-lg" placeholder="">
+                              </div>
+                          </div>
+                          <div class="col-1">
+                              <div class="mb-3">
+                                  <label class="label">Part To</label>
+                                  <input type="number" id="PART_NO_TO_APPROACH_QTY" class="form-control approachTab form-control-lg" placeholder="">
+                              </div>
+                          </div>
+                          <div class="col-2">
+                              <div class="mb-3">
+                                <button type="button" onclick="$('#action').val('approachTab');load_data()" style="margin-top:22%;" id="loginBtn" class="btn btn-primary">Search</button>
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div id="candidate" class="inner-tab-data" style="display:none;margin-top: 2%;margin-bottom: 2%;">
+                        <h5>Voter Survey List</h5>
+                        <div class="row">
+                          <div class="col-3">
+                              <div class="mb-3">
+                                  <label class="label">Candidate Name</label>
+                                  <input type="text" id="CANDIDATE_NAME" class="form-control candidateTab form-control-lg" placeholder="">
+                              </div>
+                          </div>
+                          <div class="col-2">
+                            <label class="label">Party List</label>
+                            <select id="CANDIDATE_PARTY_LIST" class="form-select candidateTab">
+                                <option value="" selected>Select</option>
+                            </select> 
+                          </div>
+                          <div class="col-1" style="width:10%">
+                              <div class="mb-3">
+                                  <label class="label">Part From</label>
+                                  <input type="number" id="PART_NO_FROM_CANDIDATE" class="form-control candidateTab form-control-lg" placeholder="">
+                              </div>
+                          </div>
+                          <div class="col-1">
+                              <div class="mb-3">
+                                  <label class="label">Part To</label>
+                                  <input type="number" id="PART_NO_TO_CANDIDATE" class="form-control candidateTab form-control-lg" placeholder="">
+                              </div>
+                          </div>
+                          <div class="col-2">
+                              <div class="mb-3">
+                                <button type="button" onclick="$('#action').val('candidateTab');load_data()" style="margin-top:22%;" id="loginBtn" class="btn btn-primary">Search</button>
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+
+
+
                     </div>    
                   </div>
                 </div> 
@@ -1366,7 +1438,15 @@ $breadCrumbName = "Voter List";
                     SCHEME_STATE: $('#SCHEME_STATE').val(),         
                     SCHEME_CANDIDATE: $('#SCHEME_CANDIDATE').val(),         
                     PART_NO_FROM_LABHARTHI: $('#PART_NO_FROM_LABHARTHI').val(),         
-                    PART_NO_TO_LABHARTHI: $('#PART_NO_TO_LABHARTHI').val(),         
+                    PART_NO_TO_LABHARTHI: $('#PART_NO_TO_LABHARTHI').val(),
+                    APPROACH_QTY: $('#APPROACH_QTY').val(),  
+                    APPROACH_REASON: $('#APPROACH_REASON').val(),  
+                    PART_NO_FROM_APPROACH_QTY: $('#PART_NO_FROM_APPROACH_QTY').val(),  
+                    PART_NO_TO_APPROACH_QTY: $('#PART_NO_TO_APPROACH_QTY').val(),  
+                    CANDIDATE_NAME: $('#CANDIDATE_NAME').val(),  
+                    CANDIDATE_PARTY_LIST: $('#CANDIDATE_PARTY_LIST').val(),  
+                    PART_NO_FROM_CANDIDATE: $('#PART_NO_FROM_CANDIDATE').val(),  
+                    PART_NO_TO_CANDIDATE: $('#PART_NO_TO_CANDIDATE').val(),           
                     action: $('#action').val()
                   },  
                   success:function(data){  
@@ -1434,6 +1514,7 @@ function load_other_data(){
                     $('#SCHEME_STATE').html(option_labharthi_list_state)
                     $('#SCHEME_CANDIDATE').html(option_labharthi_list_candidate)
                     $('#PARTY_LIST').html(option_political_party)
+                    $('#CANDIDATE_PARTY_LIST').html(option_political_party)
                     $('#LABEL_VALUE').html(option_voter_label)
                     $('#AREA_LIST').html(option_area_list)
                     $('#overlay').hide()
@@ -1461,7 +1542,7 @@ function load_other_data(){
         '.casteTab','.labelValueTab','.areaWiseTab','.wardWiseTab',
         '.partyWiseTab','.deadListTab','.birthdayTab','.educationListTab'
         ,'.homeShiftTab','.newVotersTab','.professionalTab'
-        ,'.outsideLocation','.labharthi'
+        ,'.outsideLocationTab','.labharthiTab','.approachTab','.candidateTab'
         ]
         const index = tab.indexOf(tabClass);
         if (index > -1) { // only splice array when item is found

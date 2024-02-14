@@ -66,7 +66,9 @@ $labharthi_center = ($_POST['labharthi_center'] == '') ? NULL : $_POST['labharth
 $labharthi_state = ($_POST['labharthi_state'] == '') ? NULL : $_POST['labharthi_state'];
 $labharthi_candidate = ($_POST['labharthi_candidate'] == '') ? NULL : $_POST['labharthi_candidate'];
 
-
+$approach_time = ($_POST['APPROACH_QTY'] == '') ? NULL : $_POST['APPROACH_QTY'];
+$approach_reason = ($_POST['APPROACH_REASON'] == '') ? NULL : $_POST['APPROACH_REASON'];
+$candidate_name = ($_POST['CANDIDATE_NAME'] == '') ? NULL : $_POST['CANDIDATE_NAME'];
 
 $profile_image = $_POST['profile_image'];
 $user_type = 1;
@@ -126,7 +128,10 @@ if(mysqli_num_rows($result)==1){
             `staying_address`='$outside_location_address',
             `labharthi_center`='$labharthi_center',
             `labharthi_state`='$labharthi_state',
-            `labharthi_candidate`='$labharthi_candidate'
+            `labharthi_candidate`='$labharthi_candidate',
+            `approach_time`='$approach_time',
+            `approach_reason`='$approach_reason',
+            `candidate_name`='$candidate_name'
             WHERE `id`='$voter_id'";
             $result = mysqli_query($conn,$query);
 
@@ -171,7 +176,10 @@ if(mysqli_num_rows($result)==1){
             `staying_address`='$outside_location_address',
             `labharthi_center`='$labharthi_center',
             `labharthi_state`='$labharthi_state',
-            `labharthi_candidate`='$labharthi_candidate'
+            `labharthi_candidate`='$labharthi_candidate',
+            `approach_time`='$approach_time',
+            `approach_reason`='$approach_reason',
+            `candidate_name`='$candidate_name'
             WHERE `id`='$voter_id'";
         $result = mysqli_query($conn,$query);
 
